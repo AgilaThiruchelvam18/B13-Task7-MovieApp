@@ -18,7 +18,15 @@ function Searchbar(props){
                       className='w-48 md:w-lg rounded-md showdow-lg bg-white  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
                        placeholder='Search Movies' />
                   </div>
-                  <button onClick={()=>{props.fetchProducts(props.movieValue);}}> <img src={searchIcon} /></button>
+                  <button 
+    onClick={() => {
+      if (props.movieValue) {
+        props.fetchProducts(props.movieValue);
+      }
+    }}
+    disabled={!props.movieValue} // Disable if the input is empty
+    className={`${!props.movieValue ? 'cursor-not-allowed opacity-50' : ''}`} // Optional: add styling for disabled state
+  > <img src={searchIcon} /></button>
                 </div>
                 <div className='my-auto '>
                 <select

@@ -19,8 +19,16 @@ function FavSearchcard(props) {
           <div className='flex flex-row  '>
             <div className='my-auto'><input type="text" value={movieValue} onChange={(e) => { setMovieValue(e.target.value) }} className='w-sm rounded-md showdow-lg bg-white  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500' placeholder='Search Movies' />
             </div>
-            <button onClick={() => { props.fetchProducts(movieValue); }}> <img src={searchIcon} /></button>
-          </div>
+            <button
+    onClick={() => {
+      if (props.movieValue) {
+        props.fetchProducts(props.movieValue);
+      }
+    }}
+    disabled={!props.movieValue} // Disable if the input is empty
+    className={`${!props.movieValue ? 'cursor-not-allowed opacity-50' : ''}`} // Optional: add styling for disabled state
+  > </button>
+         </div>
           <div className='my-auto '>
           <select
           value={props.genreType} 
