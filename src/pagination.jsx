@@ -11,7 +11,7 @@ function Pagination(props){
       console.log("movieValue",movieValue)
       setIsLoading(true);
       try {
-        const response = await axios.get(`http://www.omdbapi.com/?s=${movieValue}&apikey=adf6ad4a&page=${page}`);
+        const response = await axios.get(`https://www.omdbapi.com/?s=${movieValue}&apikey=adf6ad4a&page=${page}`);
         props.setMovies(response.data.Search || []);
         setTotalResults(parseInt(response.data.totalResults));
         console.log("response",response)

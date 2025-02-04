@@ -34,7 +34,7 @@ function App() {
       setisFilterOn(false);
       setIsLoading(false);
       setGenreType('All')
-      const response = await axios.get(`http://www.omdbapi.com/?s=${movieValue}&apikey=adf6ad4a`);
+      const response = await axios.get(`https://www.omdbapi.com/?s=${movieValue}&apikey=adf6ad4a`);
 
       if (response.status === 200) {
         setMovies(response.data.Search);
@@ -56,7 +56,7 @@ function App() {
   };
   let fetchSelectedProduct = async (movieValue) => {
     try {
-      let response = await axios.get(`http://www.omdbapi.com/?i=${movieValue}&apikey=adf6ad4a`);
+      let response = await axios.get(`https://www.omdbapi.com/?i=${movieValue}&apikey=adf6ad4a`);
       if (response.status === 200) {
         setSelectedMovie(response.data);
       } else {
@@ -86,7 +86,7 @@ function App() {
       }
   
       const requests = movies.map((movie) =>
-        axios.get(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=adf6ad4a`)
+        axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=adf6ad4a`)
       );
   
       const responses = await Promise.all(requests);
