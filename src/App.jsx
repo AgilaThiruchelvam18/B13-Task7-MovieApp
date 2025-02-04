@@ -43,8 +43,13 @@ function App() {
         alert("No movies found. Try searching for another title.");
       }
     } catch (error) {
-      alert("Something went wrong while fetching movies. Please try again later.");
-    }
+      if (error.response) {
+        console.log('Server responded:', error.response.data);
+      } else if (error.request) {
+        console.log('No response received:', error.request);
+      } else {
+        console.log('Error setting up request:', error.message);
+      }    }
     finally {
       setIsLoading(false);
     }
